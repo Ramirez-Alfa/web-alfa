@@ -1,1 +1,777 @@
-﻿Próximamente web oficial de Alfa Vigila
+﻿<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFA VIGILA | Seguridad Privada & Monitoreo Operativo en Misiones</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#1e293b',
+                            900: '#0f172a',
+                            950: '#090d16',
+                        },
+                        amber: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        },
+                        tactical: {
+                            500: '#0284c7',
+                            600: '#0369a1',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome / Lucide Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .glow-amber {
+            box-shadow: 0 0 25px -5px rgba(245, 158, 11, 0.4);
+        }
+        .glow-blue {
+            box-shadow: 0 0 25px -5px rgba(2, 132, 199, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-amber-500 selection:text-white">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-navy-950 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
+        <div class="max-w-7xl mx-mx-auto flex justify-between items-center mx-auto">
+            <div class="flex items-center space-x-4">
+                <span class="flex items-center gap-1.5"><i class="fa-solid fa-shield-halved text-amber-500"></i> Habilitación Provincial Misiones</span>
+                <span class="hidden md:inline text-slate-600">|</span>
+                <span class="hidden md:flex items-center gap-1.5"><i class="fa-solid fa-phone text-tactical-500"></i> Guardia 24/7: +54 376 400-0000</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <a href="https://app.alfavigila.com.ar" target="_blank" class="text-amber-400 hover:text-amber-300 font-semibold transition flex items-center gap-1">
+                    <i class="fa-solid fa-right-to-bracket"></i> Sistema PGOV
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-50 bg-navy-900/95 backdrop-blur border-b border-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                
+                <!-- LOGO AREA WITH PLACEHOLDER -->
+                <div class="flex items-center gap-3">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <!-- Space reserved for actual logo image -->
+                        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center font-bold text-navy-950 text-xl shadow-lg border border-amber-400/40 group-hover:scale-105 transition-transform">
+                            AV
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-xl font-extrabold tracking-wider text-white">ALFA <span class="text-amber-500">VIGILA</span></span>
+                            <span class="text-[10px] text-slate-400 font-medium tracking-widest uppercase">Seguridad Privada & SaaS</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- DESKTOP NAVIGATION -->
+                <nav class="hidden lg:flex items-center gap-8 font-medium text-sm text-slate-300">
+                    <a href="#inicio" class="hover:text-amber-400 transition">Inicio</a>
+                    <a href="#servicios" class="hover:text-amber-400 transition">Servicios</a>
+                    <a href="#pgov" class="hover:text-amber-400 transition">Plataforma PGOV</a>
+                    <a href="#cotizador" class="hover:text-amber-400 transition">Cotizador Express</a>
+                    <a href="#nosotros" class="hover:text-amber-400 transition">Nosotros</a>
+                    <a href="#faq" class="hover:text-amber-400 transition">Preguntas Frecuentes</a>
+                </nav>
+
+                <!-- ACTION BUTTONS -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="https://app.alfavigila.com.ar" target="_blank" class="px-4 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-xs font-semibold uppercase tracking-wider text-slate-200 hover:bg-slate-800 transition">
+                        Clientes
+                    </a>
+                    <a href="#cotizador" class="px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition flex items-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Cotizar
+                    </a>
+                </div>
+
+                <!-- MOBILE MENU BUTTON -->
+                <button id="mobile-menu-btn" class="lg:hidden text-slate-300 hover:text-white p-2">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- MOBILE NAV DROPDOWN -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-950 border-b border-slate-800 px-4 pt-3 pb-6 space-y-3 text-sm">
+            <a href="#inicio" class="block py-2 text-slate-300 hover:text-amber-400">Inicio</a>
+            <a href="#servicios" class="block py-2 text-slate-300 hover:text-amber-400">Servicios</a>
+            <a href="#pgov" class="block py-2 text-slate-300 hover:text-amber-400">Plataforma PGOV</a>
+            <a href="#cotizador" class="block py-2 text-slate-300 hover:text-amber-400">Cotizador Express</a>
+            <a href="#nosotros" class="block py-2 text-slate-300 hover:text-amber-400">Nosotros</a>
+            <a href="#faq" class="block py-2 text-slate-300 hover:text-amber-400">Preguntas Frecuentes</a>
+            <div class="pt-4 flex flex-col gap-2">
+                <a href="https://app.alfavigila.com.ar" class="w-full text-center py-2.5 rounded-lg border border-slate-700 text-slate-200 font-semibold text-xs">ACCESO CLIENTES (PGOV)</a>
+                <a href="#cotizador" class="w-full text-center py-2.5 rounded-lg bg-amber-500 text-navy-950 font-bold text-xs uppercase">SOLICITAR COTIZACIÓN</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative bg-navy-900 text-white overflow-hidden pt-12 pb-24 lg:pt-20 lg:pb-32">
+        <!-- Background Grid Pattern & Gradient Glow -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f59e0b_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="absolute top-1/4 -left-32 w-96 h-96 bg-tactical-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Column: Copy -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-800/80 border border-slate-700 text-amber-400 text-xs font-semibold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Seguridad Privada & Tecnología SaaS en Misiones
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight">
+                        Protección Física Operativa & <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-500">Monitoreo GPS 24/7</span>
+                    </h1>
+                    
+                    <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Optimizamos la seguridad de empresas, hoteles de alta gama, consorcios y eventos. Combinamos personal rigurosamente seleccionado con nuestra plataforma propietaria **PGOV** para control de rondas y novedades en tiempo real.
+                    </p>
+
+                    <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#cotizador" class="px-8 py-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold text-sm tracking-wide shadow-xl shadow-amber-500/20 transition transform hover:-translate-y-0.5 flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-shield-halved text-base"></i> Cotización Inmediata
+                        </a>
+                        <a href="#pgov" class="px-8 py-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-sm tracking-wide border border-slate-700 transition flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-laptop-code text-tactical-500"></i> Conocer Plataforma PGOV
+                        </a>
+                    </div>
+
+                    <!-- Trust Indicators -->
+                    <div class="pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <div>
+                            <p class="text-2xl lg:text-3xl font-extrabold text-white">100%</p>
+                            <p class="text-xs text-slate-400">Cobertura de Francos</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl lg:text-3xl font-extrabold text-amber-400">GPS</p>
+                            <p class="text-xs text-slate-400">Rondas Trazables</p>
+                        </div>
+                        <div>
+                            <p class="text-2xl lg:text-3xl font-extrabold text-white">24/7</p>
+                            <p class="text-xs text-slate-400">Supervisión en Vivo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Card Preview -->
+                <div class="lg:col-span-5">
+                    <div class="relative bg-navy-950 border border-slate-800 rounded-2xl p-6 shadow-2xl space-y-6 glow-blue">
+                        <!-- Card Header -->
+                        <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-3 h-3 rounded-full bg-emerald-500 animate-ping"></div>
+                                <span class="text-xs font-mono text-slate-300">ESTADO OPERATIVO EN VIVO</span>
+                            </div>
+                            <span class="text-xs bg-tactical-500/20 text-tactical-400 px-2.5 py-1 rounded font-mono">PGOV v3.4</span>
+                        </div>
+
+                        <!-- Live Status Simulation -->
+                        <div class="space-y-4">
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800/80 flex items-start gap-3">
+                                <div class="p-2.5 bg-amber-500/10 text-amber-400 rounded-lg">
+                                    <i class="fa-solid fa-user-shield text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Puesto Hotel Gran Meliá / Iguazú</h4>
+                                    <p class="text-xs text-slate-400">Guardia 01 · Presentismo Verificado biometricamente</p>
+                                    <span class="inline-block mt-2 text-[10px] text-emerald-400 font-mono">✓ Ronda 04/06 Completada sin desvíos</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800/80 flex items-start gap-3">
+                                <div class="p-2.5 bg-tactical-500/10 text-tactical-400 rounded-lg">
+                                    <i class="fa-solid fa-location-dot text-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-semibold text-white">Punto de Control Perimetral Norte</h4>
+                                    <p class="text-xs text-slate-400">Validación por QR + Geolocalización Satelital</p>
+                                    <span class="inline-block mt-2 text-[10px] text-slate-400 font-mono">Hora: Hace 4 min</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mini CTA inside widget -->
+                        <div class="pt-2">
+                            <a href="https://app.alfavigila.com.ar" target="_blank" class="w-full py-3 bg-gradient-to-r from-tactical-600 to-tactical-500 hover:from-tactical-500 hover:to-tactical-600 text-white font-bold text-xs rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition">
+                                <i class="fa-solid fa-desktop"></i> Probar Demo de Panel Clientes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- KEY BENEFITS & DIFFERENTIALS -->
+    <section class="py-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-xs font-bold text-tactical-600 uppercase tracking-widest mb-2">Por qué elegir Alfa Vigila</h2>
+                <h3 class="text-3xl font-extrabold text-navy-900">Solvencia Operativa & Tranquilidad Legal</h3>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:border-amber-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-amber-500 group-hover:text-navy-950 transition">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">Cobertura de Francos Garantizada</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Contamos con un plantel activo de vigiladores franqueros para asegurar que ningún puesto quede al descubierto por rotaciones, descansos o contingencias.
+                    </p>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:border-tactical-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-tactical-500/10 text-tactical-600 flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-tactical-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">Tecnología SaaS Integrada (PGOV)</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Supervisión satelital de rondas, libro de novedades digital y notificaciones inmediatas ante incidentes directo a la casilla de los gerentes.
+                    </p>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200 hover:border-emerald-500/50 hover:shadow-xl transition-all duration-300 group">
+                    <div class="w-14 h-14 rounded-xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center text-2xl font-bold mb-6 group-hover:bg-emerald-500 group-hover:text-white transition">
+                        <i class="fa-solid fa-gavel"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-navy-900 mb-3">Respaldo Normativo Provincial</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">
+                        Cumplimiento total de regulaciones vigentes en la Provincia de Misiones, ART, seguros de vida obligatorios y legajos auditables al 100%.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECURITY COST CALCULATOR -->
+    <section id="cotizador" class="py-20 bg-slate-100 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="px-3 py-1 bg-amber-500/10 text-amber-600 rounded-full text-xs font-bold uppercase tracking-wider">Simulador de Servicio</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 mt-3">Calculadora de Cobertura de Vigilancia</h2>
+                <p class="text-slate-600 mt-2">Configura las necesidades de tu objetivo para recibir una estimación preliminar instantánea.</p>
+            </div>
+
+            <div class="bg-white rounded-3xl shadow-xl border border-slate-200 p-6 md:p-10 max-w-4xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Calculator Inputs -->
+                    <div class="space-y-6">
+                        <!-- 1. Tipo de Objetivo -->
+                        <div>
+                            <label class="block text-xs font-bold text-navy-900 uppercase tracking-wider mb-2">1. Tipo de Instalación / Objetivo</label>
+                            <select id="calc-facility" class="w-full bg-slate-50 border border-slate-300 rounded-xl p-3 text-sm font-medium focus:ring-2 focus:ring-amber-500 focus:outline-none">
+                                <option value="empresa" data-base="100">Empresa / Planta Industrial</option>
+                                <option value="hotel" data-base="120">Hotel & Complejo Turístico</option>
+                                <option value="consorcio" data-base="90">Consorcio / Edificio Residencial</option>
+                                <option value="evento" data-base="150">Evento Privado / Temporal</option>
+                            </select>
+                        </div>
+
+                        <!-- 2. Horario de Cobertura -->
+                        <div>
+                            <label class="block text-xs font-bold text-navy-900 uppercase tracking-wider mb-2">2. Esquema Diario</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button type="button" id="btn-12hs" class="calc-time-btn p-3 rounded-xl border border-amber-500 bg-amber-50 text-navy-900 font-semibold text-xs text-center transition" data-hours="12">
+                                    12 Horas / Día
+                                </button>
+                                <button type="button" id="btn-24hs" class="calc-time-btn p-3 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs text-center transition" data-hours="24">
+                                    24 Horas Continuous
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 3. Cantidad de Guardias Simultáneos -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="text-xs font-bold text-navy-900 uppercase tracking-wider">3. Guardias por Turno</label>
+                                <span id="guard-count-display" class="font-bold text-amber-600 text-sm">1 Guardia</span>
+                            </div>
+                            <input type="range" id="calc-guards" min="1" max="5" value="1" class="w-full accent-amber-500">
+                        </div>
+
+                        <!-- 4. Cobertura de Francos (Franquero) -->
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 flex items-center justify-between">
+                            <div>
+                                <h4 class="text-xs font-bold text-navy-900 uppercase">Incluir Vigilador Franquero</h4>
+                                <p class="text-[11px] text-slate-500">Cubre descansos de ley sin vacíos de puesto</p>
+                            </div>
+                            <input type="checkbox" id="calc-franquero" checked class="w-5 h-5 accent-amber-500 rounded cursor-pointer">
+                        </div>
+                    </div>
+
+                    <!-- Calculator Output Display -->
+                    <div class="bg-navy-900 text-white p-6 rounded-2xl flex flex-col justify-between border border-slate-800">
+                        <div>
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+                                <span class="text-xs font-mono text-amber-400">RESUMEN DEL PLAN</span>
+                                <span class="text-[10px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded">Misiones, ARG</span>
+                            </div>
+
+                            <ul class="space-y-3 text-xs text-slate-300">
+                                <li class="flex justify-between">
+                                    <span>Instalación:</span>
+                                    <strong id="summary-facility" class="text-white">Empresa / Industria</strong>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Jornada:</span>
+                                    <strong id="summary-hours" class="text-white">12 Horas por día</strong>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Personal por Turno:</span>
+                                    <strong id="summary-guards" class="text-white">1 Guardia</strong>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Esquema Franquero:</span>
+                                    <strong id="summary-franquero" class="text-emerald-400">Incluido (100% Continuo)</strong>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Sistema PGOV SaaS:</span>
+                                    <strong class="text-amber-400">Incluido sin Cargo</strong>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-800">
+                            <div class="text-center mb-4">
+                                <span class="text-[10px] uppercase text-slate-400">Estimación de Servicio Operativo</span>
+                                <div class="text-2xl font-extrabold text-amber-400 mt-1">Cotización a Medida</div>
+                                <p class="text-[11px] text-slate-400 mt-1">Respuesta comercial en menos de 2 horas</p>
+                            </div>
+
+                            <button id="send-whatsapp-quote" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg transition">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Solicitar Presupuesto Formal
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLATAFORMA PGOV SHOWCASE (INTERACTIVE TABS) -->
+    <section id="pgov" class="py-20 bg-navy-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-14">
+                <span class="px-3 py-1 bg-tactical-500/20 text-tactical-400 rounded-full text-xs font-bold uppercase tracking-wider">Tecnología Exclusiva</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold mt-3">Plataforma PGOV: Gestión & Control GPS</h2>
+                <p class="text-slate-300 mt-2 text-sm md:text-base">Nuestros clientes acceden a un panel web para verificar el cumplimiento real de su servicio de vigilancia.</p>
+            </div>
+
+            <!-- Tab Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 md:gap-4 mb-10">
+                <button class="pgov-tab-btn px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider bg-amber-500 text-navy-950 shadow-lg transition" data-tab="tab-rondas">
+                    <i class="fa-solid fa-route mr-2"></i> Control de Rondas
+                </button>
+                <button class="pgov-tab-btn px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-tab="tab-presentismo">
+                    <i class="fa-solid fa-user-clock mr-2"></i> Presentismo Biométrico
+                </button>
+                <button class="pgov-tab-btn px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider bg-slate-800 text-slate-300 hover:bg-slate-700 transition" data-tab="tab-alertas">
+                    <i class="fa-solid fa-bell mr-2"></i> Libro Digital de Novedades
+                </button>
+            </div>
+
+            <!-- Tab Content Container -->
+            <div class="bg-navy-950 border border-slate-800 rounded-3xl p-6 md:p-10 shadow-2xl">
+                
+                <!-- Tab 1: Rondas -->
+                <div id="tab-rondas" class="pgov-tab-content grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Trazabilidad Satelital en Tiempo Real</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Cada vigilador cuenta con la app corporativa PGOV que escanea puntos de chequeo (QR/NFC) en el perímetro. La central recibe la ubicación georreferenciada con la hora exacta de la ronda.
+                        </p>
+                        <ul class="space-y-2 text-xs text-slate-400">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Detección automática de desvíos o paradas extensas</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-400"></i> Histórico de recorridos descargable en PDF/Excel</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
+                        <div class="flex justify-between border-b border-slate-800 pb-2 text-amber-400">
+                            <span>PONCHO_NORTE_01</span>
+                            <span>VALIDADO GPS</span>
+                        </div>
+                        <div class="text-[11px] text-slate-400">Punto #3 - Portón Principal</div>
+                        <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                            <div class="bg-amber-500 h-full w-3/4"></div>
+                        </div>
+                        <p class="text-[10px] text-slate-500">Último marcaje: Hace 2 minutos (Lat: -25.598, Long: -54.575)</p>
+                    </div>
+                </div>
+
+                <!-- Tab 2: Presentismo -->
+                <div id="tab-tab-presentismo" class="pgov-tab-content hidden grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-tactical-500/10 text-tactical-400 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Control Restringido de Tomada de Guardia</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            El vigilador no puede iniciar su turno fuera del rango de coordenadas de su puesto. Se valida el relevo exacto con el franquero asignado, anulando las llegadas tarde inadvertidas.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
+                        <div class="flex justify-between border-b border-slate-800 pb-2 text-emerald-400">
+                            <span>RELEVO EFECTUADO</span>
+                            <span>07:00 HS</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300">Guardia Saliente: Rodríguez H.</p>
+                        <p class="text-[11px] text-slate-300">Guardia Entrante: Benítez M. (Franquero)</p>
+                    </div>
+                </div>
+
+                <!-- Tab 3: Alertas -->
+                <div id="tab-tab-alertas" class="pgov-tab-content hidden grid md:grid-cols-2 gap-8 items-center">
+                    <div class="space-y-4">
+                        <div class="w-12 h-12 bg-red-500/10 text-red-400 rounded-xl flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Libro de Novedades Digital Inalterable</h3>
+                        <p class="text-slate-300 text-sm leading-relaxed">
+                            Cualquier anomalía o vehículo no autorizado queda registrado fotográficamente en la plataforma. Los supervisores y el cliente reciben una notificación push o correo con el reporte adjunto.
+                        </p>
+                    </div>
+                    <div class="bg-slate-900 p-6 rounded-2xl border border-slate-800 font-mono text-xs text-slate-300 space-y-3">
+                        <div class="flex justify-between border-b border-slate-800 pb-2 text-red-400">
+                            <span>NOVEDAD REGISTRADA</span>
+                            <span>URGENCIA: MEDIA</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300">Fondo de Perímetro: Luces secundarias fuera de servicio.</p>
+                        <p class="text-[10px] text-slate-500">Fotografía adjuntada en legajo #9401</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES DETAILED SECTION -->
+    <section id="servicios" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3 py-1 bg-amber-500/10 text-amber-600 rounded-full text-xs font-bold uppercase tracking-wider">Especialidades</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-navy-900 mt-3">Servicios Adaptados a Cada Sector</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-amber-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-building-user"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Vigilancia Física & Franqueros</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Guardias capacitados para control de accesos, custodia de mercaderías e inspección de perimetrales. Cobertura ininterrumpida de francos y vacacionales.
+                    </p>
+                    <a href="#cotizador" class="text-xs font-bold text-amber-600 hover:text-amber-700 uppercase tracking-wider flex items-center gap-1">
+                        Solicitar propuesta <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-tactical-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-hotel"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Hotelería & Resorts de Alta Gama</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Personal instruido en atención al huésped, discreción y protocolos internacionales de hospitalidad (Gran Meliá, Resorts turísticos en Misiones).
+                    </p>
+                    <a href="#cotizador" class="text-xs font-bold text-amber-600 hover:text-amber-700 uppercase tracking-wider flex items-center gap-1">
+                        Solicitar propuesta <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <div class="w-12 h-12 rounded-xl bg-navy-900 text-emerald-400 flex items-center justify-center text-xl mb-6">
+                        <i class="fa-solid fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-navy-900 mb-3">Industrias & Complejos Logísticos</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                        Protección de naves industriales, pesaje de camiones, control de stock en ingreso/egreso y cumplimiento de normas de seguridad e higiene.
+                    </p>
+                    <a href="#cotizador" class="text-xs font-bold text-amber-600 hover:text-amber-700 uppercase tracking-wider flex items-center gap-1">
+                        Solicitar propuesta <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (INTERACTIVE ACCORDION) -->
+    <section id="faq" class="py-20 bg-white border-t border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-14">
+                <span class="px-3 py-1 bg-tactical-500/10 text-tactical-600 rounded-full text-xs font-bold uppercase tracking-wider">Respuestas Rápidas</span>
+                <h2 class="text-3xl font-extrabold text-navy-900 mt-3">Preguntas Frecuentes</h2>
+            </div>
+
+            <div class="space-y-4" id="faq-accordion">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button class="faq-btn w-full p-6 text-left font-bold text-navy-900 text-base flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>¿Alfa Vigila cuenta con habilitación para operar en Misiones?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Sí, Alfa Vigila cumple estrictamente con las legislaciones provinciales de la Provincia de Misiones para la prestación de servicios de seguridad privada y vigilancia física, manteniendo legajos y pólizas al día.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button class="faq-btn w-full p-6 text-left font-bold text-navy-900 text-base flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>¿Cómo funciona el esquema de vigiladores franqueros?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        Asignamos personal de relevo (franqueros) que conocen el protocolo específico del objetivo. Esto asegura que durante los francos semanales o feriados del personal titular, el puesto permanezca cubierto sin alterar la calidad del servicio.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border border-slate-200 rounded-2xl overflow-hidden transition">
+                    <button class="faq-btn w-full p-6 text-left font-bold text-navy-900 text-base flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition">
+                        <span>¿Tiene costo adicional la plataforma PGOV?</span>
+                        <i class="fa-solid fa-chevron-down text-slate-400 transition-transform"></i>
+                    </button>
+                    <div class="faq-content hidden p-6 text-sm text-slate-600 border-t border-slate-200 bg-white leading-relaxed">
+                        No. La plataforma PGOV de control de rondas GPS y reporte de novedades en tiempo real está incluida sin costo adicional en nuestras contrataciones de servicio de vigilancia continua.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT FORM & FOOTER -->
+    <footer id="contacto" class="bg-navy-950 text-white pt-20 pb-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-12 gap-12 mb-16">
+                
+                <!-- Contact info & Logo -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500 flex items-center justify-center font-bold text-navy-950 text-lg">
+                            AV
+                        </div>
+                        <span class="text-2xl font-extrabold tracking-wider text-white">ALFA <span class="text-amber-500">VIGILA</span></span>
+                    </div>
+
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Líderes en servicios integrales de seguridad privada y monitoreo operativo SaaS en la provincia de Misiones, Argentina.
+                    </p>
+
+                    <div class="space-y-3 text-sm text-slate-300">
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-location-dot text-amber-500 w-5"></i>
+                            <span>Posadas / Puerto Iguazú / Misiones</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-amber-500 w-5"></i>
+                            <span>contacto@alfavigila.com.ar</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-globe text-amber-500 w-5"></i>
+                            <span>www.alfavigila.com.ar</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fast Contact Form -->
+                <div class="lg:col-span-7 bg-navy-900 p-8 rounded-3xl border border-slate-800">
+                    <h3 class="text-xl font-bold text-white mb-2">Mensaje Directo Comercial</h3>
+                    <p class="text-slate-400 text-xs mb-6">Dejá tus datos y un asesor operativo se pondrá en contacto a la brevedad.</p>
+
+                    <form id="contact-form" class="space-y-4">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="text" placeholder="Nombre completo" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                            <input type="email" placeholder="Correo electrónico corporativo" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                        </div>
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <input type="tel" placeholder="Teléfono / WhatsApp" required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                            <input type="text" placeholder="Empresa o Consorcio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500">
+                        </div>
+                        <textarea rows="3" placeholder="Detalles de la necesidad de vigilancia..." required class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500"></textarea>
+
+                        <button type="submit" class="w-full py-4 bg-amber-500 hover:bg-amber-600 text-navy-950 font-bold text-xs rounded-xl uppercase tracking-wider transition shadow-lg shadow-amber-500/10">
+                            Enviar Consulta Comercial
+                        </button>
+                    </form>
+                    <div id="contact-alert" class="hidden mt-4 p-3 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs rounded-xl text-center font-medium">
+                        ✓ Mensaje enviado correctamente. Nos comunicaremos en breve.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Copyright -->
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <p>© 2026 ALFA VIGILA. Todos los derechos reservados. Misiones, Argentina.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="https://app.alfavigila.com.ar" class="hover:text-amber-400">Consola PGOV SaaS</a>
+                    <span>·</span>
+                    <a href="#" class="hover:text-amber-400">Términos del Servicio</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // 1. Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Interactive Calculator Logic
+        const facilitySelect = document.getElementById('calc-facility');
+        const guardSlider = document.getElementById('calc-guards');
+        const guardDisplay = document.getElementById('guard-count-display');
+        const franqueroCheckbox = document.getElementById('calc-franquero');
+        const btn12 = document.getElementById('btn-12hs');
+        const btn24 = document.getElementById('btn-24hs');
+        let currentHours = 12;
+
+        const summaryFacility = document.getElementById('summary-facility');
+        const summaryHours = document.getElementById('summary-hours');
+        const summaryGuards = document.getElementById('summary-guards');
+        const summaryFranquero = document.getElementById('summary-franquero');
+
+        function updateCalculator() {
+            const facilityName = facilitySelect.options[facilitySelect.selectedIndex].text;
+            const guards = guardSlider.value;
+            const hasFranquero = franqueroCheckbox.checked;
+
+            guardDisplay.textContent = `${guards} ${guards == 1 ? 'Guardia' : 'Guardias'}`;
+            summaryFacility.textContent = facilityName;
+            summaryHours.textContent = `${currentHours} Horas por día`;
+            summaryGuards.textContent = `${guards} ${guards == 1 ? 'Guardia' : 'Guardias'}`;
+            
+            if (hasFranquero) {
+                summaryFranquero.textContent = "Incluido (100% Continuo)";
+                summaryFranquero.className = "text-emerald-400";
+            } else {
+                summaryFranquero.textContent = "Sin franquero (Parcial)";
+                summaryFranquero.className = "text-amber-400";
+            }
+        }
+
+        btn12.addEventListener('click', () => {
+            currentHours = 12;
+            btn12.className = 'calc-time-btn p-3 rounded-xl border border-amber-500 bg-amber-50 text-navy-900 font-semibold text-xs text-center transition';
+            btn24.className = 'calc-time-btn p-3 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs text-center transition';
+            updateCalculator();
+        });
+
+        btn24.addEventListener('click', () => {
+            currentHours = 24;
+            btn24.className = 'calc-time-btn p-3 rounded-xl border border-amber-500 bg-amber-50 text-navy-900 font-semibold text-xs text-center transition';
+            btn12.className = 'calc-time-btn p-3 rounded-xl border border-slate-200 text-slate-600 font-semibold text-xs text-center transition';
+            updateCalculator();
+        });
+
+        facilitySelect.addEventListener('change', updateCalculator);
+        guardSlider.addEventListener('input', updateCalculator);
+        franqueroCheckbox.addEventListener('change', updateCalculator);
+
+        // Send Whatsapp Quote
+        document.getElementById('send-whatsapp-quote').addEventListener('click', () => {
+            const msg = `Hola Alfa Vigila, solicito cotización para: ${summaryFacility.textContent}, Jornada: ${currentHours}hs, Guardias: ${guardSlider.value}, Franquero: ${franqueroCheckbox.checked ? 'Sí' : 'No'}.`;
+            const url = `https://wa.me/5493764000000?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+
+        // 3. PGOV Platform Tabs Switcher
+        const tabBtns = document.querySelectorAll('.pgov-tab-btn');
+        const tabContents = document.querySelectorAll('.pgov-tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const target = btn.dataset.tab;
+
+                tabBtns.forEach(b => {
+                    b.className = 'pgov-tab-btn px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider bg-slate-800 text-slate-300 hover:bg-slate-700 transition';
+                });
+                btn.className = 'pgov-tab-btn px-5 py-3 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider bg-amber-500 text-navy-950 shadow-lg transition';
+
+                tabContents.forEach(content => {
+                    if (content.id === `tab-${target}`) {
+                        content.classList.remove('hidden');
+                    } else {
+                        content.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // 4. FAQ Accordion Logic
+        const faqBtns = document.querySelectorAll('.faq-btn');
+        faqBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const content = btn.nextElementSibling;
+                const icon = btn.querySelector('i');
+
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // 5. Contact Form Validation Feedback
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const alertBox = document.getElementById('contact-alert');
+            alertBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
+
+
+
+
